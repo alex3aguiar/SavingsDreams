@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="660.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ListMovimentacoesFXController">
+   <center>
+      <ScrollPane fx:id="painelScrollMovimentacoes" maxWidth="770.0" minWidth="770.0" prefHeight="660.0" prefWidth="770.0" BorderPane.alignment="CENTER">
+         <content>
+            <ListView fx:id="painelMovimentacoes" maxWidth="760.0" prefHeight="655.0" prefWidth="760.0" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

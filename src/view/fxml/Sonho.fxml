@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="painel" maxWidth="740.0" prefHeight="200.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <GridPane GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="187.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="188.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="31.0" prefWidth="375.0" text="Data criaçao">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lblDataCriacao" prefHeight="31.0" prefWidth="375.0" text="Data criaçao" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Label fx:id="lblDescricao" prefHeight="31.0" prefWidth="375.0" text="Sonho 1">
+               <font>
+                  <Font name="Sawasdee Bold" size="18.0" />
+               </font></Label>
+            <Label fx:id="lblValor" prefHeight="31.0" prefWidth="375.0" text="R$ 10000.000" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Sawasdee Bold" size="18.0" />
+               </font></Label>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="187.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="188.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="31.0" prefWidth="375.0" text="Previsao">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lblDataPrevisao" prefHeight="31.0" prefWidth="375.0" text="Previsao" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="187.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="188.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="31.0" prefWidth="375.0" text="Realizado em">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lblDataRealizacao" prefHeight="31.0" prefWidth="375.0" text="Realizado em" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Sawasdee Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Button fx:id="btnExcluirSonho" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="30.0" minHeight="10.0" mnemonicParsing="false" onAction="#btnExcluirSonhoAction" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #FF6254;" text="Excluir sonho" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Sawasdee Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding></Button>
+            <Button fx:id="btnRealizarSonho" alignment="BASELINE_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="30.0" minHeight="10.0" mnemonicParsing="false" onAction="#btnRealizarSonhoAction" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #C3F503;" text="Realizar sonho" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Sawasdee Bold" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets right="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </center>
+   <bottom>
+      <GridPane prefHeight="50.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ProgressBar fx:id="progressBar" minHeight="10.0" prefHeight="10.0" prefWidth="748.0" progress="0.48" style="-fx-accent: #C3F503;" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </ProgressBar>
+            <Label fx:id="lblRotuloProgressBar" alignment="CENTER" prefHeight="15.0" prefWidth="748.0" text="90% completo" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Sawasdee Bold" size="16.0" />
+               </font></Label>
+         </children>
+      </GridPane>
+   </bottom>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="20.0" left="5.0" right="5.0" top="20.0" />
+   </padding>
+</BorderPane>

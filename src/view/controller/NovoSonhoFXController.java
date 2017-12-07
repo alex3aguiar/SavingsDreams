@@ -30,7 +30,7 @@ public class NovoSonhoFXController {
 	@FXML 
 	private Button btnLimpar;
 	@FXML
-	private Label lblError;
+	private Label lblStatus;
 	
 	
 	public static URL getLocale() {
@@ -50,15 +50,19 @@ public class NovoSonhoFXController {
 			sonho.setValor((BigDecimal) df.parse(txtValor.getText()));
 			sonho.setDataPrevisao(txtDataPrevisao.getValue());
 			
+			lblStatus.setText("Salvando...");
+			btnSalvar.setDisable(true);
+			btnLimpar.setDisable(true);
+			
 			if(sonhoController.salvar(sonho) == null) {
-				lblError.setText("Erro ao salvar no banco");
+				lblStatus.setText("Erro ao salvar no banco");
 			} else {
 				limparForm();
-				lblError.setText("Salvo com sucesso");
-				Thread.sleep(10 * 1000);
-				lblError.setText(null);
-				
+				lblStatus.setText("Salvo com sucesso");
 			}
+			
+			btnSalvar.setDisable(false);
+			btnLimpar.setDisable(false);
 		}
 	}
 	
@@ -72,24 +76,24 @@ public class NovoSonhoFXController {
 		txtDescricao.clear();
 		txtDataPrevisao.setValue(LocalDate.now());
 		txtValor.clear();
-		lblError.setText(null);
+		lblStatus.setText(null);
 	}
 	
 	
 	public Boolean validarCampos() {
 		
 		if(StringUtils.isBlank(txtDescricao.getText()) || StringUtils.isBlank(txtValor.getText()) || txtDataPrevisao.getValue() == null){
-			lblError.setText("Preencha todos os campos");
+			lblStatus.setText("Preencha todos os campos");
 			return false;
 		}
 			
 		if(txtDataPrevisao.getValue().isBefore(LocalDate.now())) {
-			lblError.setText("A data não pode ser posterior ao dia de hoje");
+			lblStatus.setText("A data não pode ser posterior ao dia de hoje");
 			return false;
 		} 
 		
 		if(!validarNumero(txtValor.getText())){
-			lblError.setText("Valor inválido");
+			lblStatus.setText("Valor inválido");
 			return false;
 		} 
 			return true;

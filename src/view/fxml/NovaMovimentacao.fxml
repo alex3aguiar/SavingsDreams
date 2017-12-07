@@ -75,7 +75,7 @@
                         <Font name="Sawasdee Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="lblError" prefHeight="15.0" prefWidth="406.0" textFill="#ff4444" GridPane.columnIndex="1">
+                  <Label fx:id="lblStatus" prefHeight="15.0" prefWidth="406.0" textFill="#ff4444" GridPane.columnIndex="1">
                      <font>
                         <Font name="Sawasdee Bold" size="16.0" />
                      </font>

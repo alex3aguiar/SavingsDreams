@@ -1,11 +1,14 @@
 package controller;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import model.Movimentacao;
 import model.Poupanca;
 import model.TipoMovimentacao;
+import persistence.DAO;
 import persistence.PoupancaDAO;
 
 public class PoupancaController extends Controller<Poupanca> {
@@ -29,13 +32,11 @@ public class PoupancaController extends Controller<Poupanca> {
 
 	@Override
 	public Boolean deletar(Poupanca t) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Poupanca> listar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -55,6 +56,11 @@ public class PoupancaController extends Controller<Poupanca> {
 		poupanca.setUltimaAtualizacao(LocalDateTime.now());
 		
 		return poupanca;
+	}
+	
+	public BigDecimal getSaldo() {
+		dao = new PoupancaDAO();
+		return dao.getLast().getSaldo();
 	}
 
 

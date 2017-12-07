@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 
+import controller.PoupancaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +44,8 @@ public class HomeFXController {
 	@FXML
 	public void initialize() {
 		atualizarSaldo();
+		carregarPainel(ListSonhosFXController.getLocale());
+		
 	}
 
 	public static URL getLocale() {
@@ -74,18 +77,6 @@ public class HomeFXController {
 		carregarPainel(NovaMovimentacaoFXController.getLocale());
 	}
 
-	// @FXML
-	// private void btnPainelMenuMouseEntered(ActionEvent event) {
-	// Button button = ((Button)event.getSource());
-	// System.out.println("oiee " + button.getText());
-	// }
-	//
-	// @FXML
-	// private void btnPainelMenuMouseExited(ActionEvent event) {
-	// Button button = ((Button)event.getSource());
-	// System.out.println("oiee " + button.getText());
-	// }
-
 	private void carregarPainel(URL locale) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -98,7 +89,7 @@ public class HomeFXController {
 
 	public void atualizarSaldo() {
 		NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-		DAO<Poupanca> dao = new PoupancaDAO();
-		lblSaldo.setText(numberFormat.format(dao.getLast().getSaldo()));
+		PoupancaController poupancaController = new PoupancaController();
+		lblSaldo.setText(numberFormat.format(poupancaController.getSaldo()));
 	}
 }

@@ -31,7 +31,7 @@ public class NovaMovimentacaoFXController {
 	@FXML 
 	Button btnLimpar;
 	@FXML
-	Label lblError;
+	Label lblStatus;
 	
 	public static URL getLocale() {
 		return NovaMovimentacaoFXController.class.getResource("/view/fxml/NovaMovimentacao.fxml");
@@ -50,20 +50,17 @@ public class NovaMovimentacaoFXController {
 			movimentacao.setValor((BigDecimal) df.parse(txtValor.getText()));
 			movimentacao.setTipo(rbEntrada.isSelected() ? TipoMovimentacao.ENTRADA:TipoMovimentacao.SAIDA);
 			
-			btnSalvar.setText("Salvando...");
+			lblStatus.setText("Salvando...");
 			btnSalvar.setDisable(true);
 			btnLimpar.setDisable(true);
 			
 			if(movimentacaoController.salvar(movimentacao) == null) {
-				lblError.setText("Erro ao salvar no banco");
+				lblStatus.setText("Erro ao salvar no banco");
 			} else {
-				lblError.setText("Salvo com sucesso");
 				limparForm();
-				Thread.sleep(10 * 1000);
-				lblError.setText(null);
+				lblStatus.setText("Salvo com sucesso");
 			}
 			
-			btnSalvar.setText("Salvar");
 			btnSalvar.setDisable(false);
 			btnLimpar.setDisable(false);
 			
@@ -80,16 +77,16 @@ public class NovaMovimentacaoFXController {
 		txtDescricao.clear();
 		rbEntrada.setSelected(true);
 		txtValor.clear();
-		lblError.setText(null);
+		lblStatus.setText(null);
 	}
 	
 	
 	public Boolean validarCampos() {
 		if(StringUtils.isBlank(txtDescricao.getText()) || StringUtils.isBlank(txtValor.getText()) || (!rbEntrada.isSelected() && !rbSaida.isSelected())){
-			lblError.setText("Preencha todos os campos");
+			lblStatus.setText("Preencha todos os campos");
 			return false;
 		} else if(!validarNumero(txtValor.getText())) {
-			lblError.setText("Valor inválido");
+			lblStatus.setText("Valor inválido");
 			return false;
 		} else {
 			return true;

@@ -23,10 +23,10 @@ Requisitos
 <li>Banco de dados MySQL instalado</li>
 <li>Java SDK 1.8+ instalado</li>
 <li>Eclipse IDE instalado</li>
-<li>Plugin E(X)clipse instalado no eclipse </li>
 <li>Git ou plugin EGit instalado no eclipse </li>
 </ul>
 
-*Em breve um link para o video de instalacao aqui*
+* Link de instalação *
+https://youtu.be/JgGSZd6FKs8
 
 </html>

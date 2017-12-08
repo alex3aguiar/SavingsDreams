@@ -59,7 +59,7 @@ public class SonhoController extends Controller<Sonho> {
 		MovimentacaoController movimentacaoController = new MovimentacaoController();
 		Movimentacao movimentacao = new Movimentacao();
 
-		movimentacao.setDescricao("Realizacao sonho" + sonho.getDescricao());
+		movimentacao.setDescricao(sonho.getDescricao());
 		movimentacao.setValor(sonho.getValor());
 		movimentacao.setTipo(TipoMovimentacao.REALIZACAO_SONHO);
 		

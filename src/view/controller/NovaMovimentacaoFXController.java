@@ -3,17 +3,21 @@ package view.controller;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 
 import org.apache.commons.lang3.StringUtils;
 
 import controller.MovimentacaoController;
+import controller.PoupancaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Window;
 import model.Movimentacao;
 import model.TipoMovimentacao;
 
@@ -39,7 +43,7 @@ public class NovaMovimentacaoFXController {
 	
 	@FXML
 	public void btnSalvarAction(ActionEvent event) throws ParseException, InterruptedException{
-		if(validarCampos()){
+		if(validarCampos()) {
 			DecimalFormat df = new DecimalFormat("0.##");
 			df.setParseBigDecimal(true);
 			
@@ -63,7 +67,7 @@ public class NovaMovimentacaoFXController {
 			
 			btnSalvar.setDisable(false);
 			btnLimpar.setDisable(false);
-			
+			atualizarSaldo(event);
 		}
 	}
 	
@@ -103,6 +107,19 @@ public class NovaMovimentacaoFXController {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public void atualizarSaldo(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Window theStage = source.getScene().getWindow();
+		Node lblSaldoNode = (Node) theStage.getScene().lookup("#lblSaldo");
+		
+		Label lblSaldo = (Label)lblSaldoNode;
+		
+		NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+		PoupancaController poupancaController = new PoupancaController();
+		lblSaldo.setText(numberFormat.format(poupancaController.getSaldo()));
+
 	}
 
 }

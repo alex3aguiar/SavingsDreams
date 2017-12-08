@@ -64,15 +64,19 @@ public class SonhoFXController {
 		if(JOptionPane.showConfirmDialog(null, "Deseja marcar esse sonho como realizado?", "Realizar sonho", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			SonhoController controller = new SonhoController();
 			controller.marcarComoRealizado(sonho);
+			atualizarSaldo(event);
+			atualizarLista(event);
 		}
 
 	}
 
 	@FXML
 	private void btnExcluirSonhoAction(ActionEvent event) {
+		
 		if(JOptionPane.showConfirmDialog(null, "Deseja excluir esse sonho?", "Excluir sonho", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			SonhoController controller = new SonhoController();
 			controller.deletar(sonho);
+			atualizarLista(event);
 		}
 	}
 
@@ -106,7 +110,7 @@ public class SonhoFXController {
 				btnExcluirSonho.setVisible(false);
 				btnRealizarSonho.setVisible(false);
 			} else if(valorProgressBar.doubleValue() < 1) {
-				btnRealizarSonho.setVisible(true);
+				btnRealizarSonho.setVisible(false);
 			}
 
 			if (sonho.getDataRealizacao() == null) {
@@ -141,12 +145,34 @@ public class SonhoFXController {
 		return porcentagem;
 	}
 	
-//	public void atualizarSaldo() {
-//		Node source = (Node) event.getSource();
-//		Window theStage = source.getScene().getWindow();
-//
-//		Node lblSaldo = (Node) theStage.getScene().lookup("#lblSaldo");
-//
-//	}
+	public void atualizarSaldo(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Window theStage = source.getScene().getWindow();
+		Node lblSaldoNode = (Node) theStage.getScene().lookup("#lblSaldo");
+		
+		Label lblSaldo = (Label)lblSaldoNode;
+		
+		NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+		PoupancaController poupancaController = new PoupancaController();
+		lblSaldo.setText(numberFormat.format(poupancaController.getSaldo()));
+	}
+	
+	public void atualizarLista(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Window theStage = source.getScene().getWindow();
+		Node painelPrincipalNode = (Node) theStage.getScene().lookup("#painelPrincipal");
+		
+		BorderPane painelPrincipal = (BorderPane)painelPrincipalNode;
+		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(ListSonhosFXController.getLocale());
+			painelPrincipal.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 }

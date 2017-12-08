@@ -55,7 +55,7 @@ public class SonhoDAO extends DAO<Sonho> {
 
 	@Override
 	protected PreparedStatement getListQuery() throws SQLException {
-		final String LISTALL = "SELECT * FROM `savingsdreams`.`sonho`";
+		final String LISTALL = "SELECT * FROM `savingsdreams`.`sonho` ORDER BY `realizado`, `dataRealizacao` desc, `dataCriacao` desc";
 		PreparedStatement preparedStatement = ConexaoBD.getInstance().getConnection().prepareStatement(LISTALL);
 		return preparedStatement;	
 	}

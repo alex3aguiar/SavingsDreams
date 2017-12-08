@@ -36,14 +36,18 @@ public class ListSonhosFXController {
 	public void setListView() {
 		SonhoController sonhoController = new SonhoController();
 		sonhos = sonhoController.listar();
-		observableList.setAll(sonhos);
-		painelSonhos.setItems(observableList);
-		painelSonhos.setCellFactory(new Callback<ListView<Sonho>, ListCell<Sonho>>() {
-			@Override
-			public ListCell<Sonho> call(ListView<Sonho> param) {
-				return new ListSonhosViewCell();
+		if(sonhos != null) {
+			if(!sonhos.isEmpty()) {
+				observableList.setAll(sonhos);
+				painelSonhos.setItems(observableList);
+				painelSonhos.setCellFactory(new Callback<ListView<Sonho>, ListCell<Sonho>>() {
+					@Override
+					public ListCell<Sonho> call(ListView<Sonho> param) {
+						return new ListSonhosViewCell();
+					}
+				});
 			}
-		});
+		}
 	}
 
 }

@@ -101,9 +101,11 @@ public abstract class DAO<T> {
 
 	protected final List<T>  buildListEntity(ResultSet resultSet) throws SQLException {
 		List<T> list = new ArrayList<>();
-
-		while(!resultSet.isLast()) {
-			list.add(buildEntity(resultSet));
+		if(resultSet.next()) {
+			resultSet.previous();
+			while(!resultSet.isLast()) {
+				list.add(buildEntity(resultSet));
+			}
 		}
 
 		return list;

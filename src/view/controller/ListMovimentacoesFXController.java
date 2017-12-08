@@ -36,14 +36,18 @@ public class ListMovimentacoesFXController {
 	public void setListView() {
 		MovimentacaoController movimentacaoController = new MovimentacaoController();
 		movimentacoes = movimentacaoController.listar();
-		observableList.setAll(movimentacoes);
-		painelMovimentacoes.setItems(observableList);
-		painelMovimentacoes.setCellFactory(new Callback<ListView<Movimentacao>, ListCell<Movimentacao>>() {
-			@Override
-			public ListCell<Movimentacao> call(ListView<Movimentacao> param) {
-				return new ListMovimentacoesViewCell();
+		if(movimentacoes != null) {
+			if(!movimentacoes.isEmpty()) {
+				observableList.setAll(movimentacoes);
+				painelMovimentacoes.setItems(observableList);
+				painelMovimentacoes.setCellFactory(new Callback<ListView<Movimentacao>, ListCell<Movimentacao>>() {
+					@Override
+					public ListCell<Movimentacao> call(ListView<Movimentacao> param) {
+						return new ListMovimentacoesViewCell();
+					}
+				});
 			}
-		});
+		}
 	}
 
 }

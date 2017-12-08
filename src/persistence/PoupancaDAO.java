@@ -80,7 +80,7 @@ public class PoupancaDAO extends DAO<Poupanca>{
 	
 	@Override
 	protected Poupanca setGeneratedKeys(PreparedStatement preparedStatement, Poupanca poupanca) throws SQLException {
-		poupanca.setId(preparedStatement.getGeneratedKeys().getInt("id"));
+		poupanca.setId(preparedStatement.getGeneratedKeys().getConcurrency());
 		return poupanca;
 	}
 	

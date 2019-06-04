@@ -86,3 +86,36 @@ CREATE TABLE `sonho` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-12-08  7:31:49
+
+
+
+DROP TRIGGER debitaoucredita; 
+ 
+DELIMITER  $$
+CREATE  TRIGGER debitaoucredita BEFORE INSERT
+ON movimentacao
+FOR EACH ROW
+BEGIN
+        	   CALL atualizaPoupanca(NEW.tipo,NEW.valor,NEW.id_poupanca);
+END$$
+DELIMITER ;
+
+
+
+
+DROP procedure IF EXISTS `atualizaPoupanca`;
+DELIMITER $$
+CREATE PROCEDURE atualizaPoupanca (IN tipo VARCHAR(255),IN valor int, IN id_poupanca int)
+BEGIN	
+
+ 	IF tipo = "ENTRADA"   THEN
+		UPDATE poupanca   SET saldo = ((SELECT   poupanca.saldo  FROM poupanca where id = id_poupanca) +valor) WHERE id = id_poupanca;
+	END IF;
+    
+	IF tipo = "SAIDA"   THEN
+		UPDATE poupanca   SET saldo =  ((SELECT   poupanca.saldo  FROM poupanca where id = id_poupanca) -valor)  WHERE id = id_poupanca;
+	END IF;
+        
+END $$
+DELIMITER ;
+CALL atualizaPoupanca(tipo ,valor);
